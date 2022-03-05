@@ -11,5 +11,6 @@
 #  updated_at :datetime         not null
 #
 class Actor < ApplicationRecord
-  has_many(:character, { :class_name => "Character", :foreign_key => "actor_id" }))
+  has_many :characters
+  has_many :filmography, :through => :characters, :source => :movies
 end
