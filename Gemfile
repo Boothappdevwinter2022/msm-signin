@@ -71,3 +71,5 @@ end
 group :production do
   gem 'pg'
 end
+
+#install draft generator
