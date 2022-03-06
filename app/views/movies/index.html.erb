@@ -78,7 +78,11 @@
         <th>
           ID
         </th>
-
+        
+        <th>
+          Image
+        </th>
+        
         <th>
           Title
         </th>
@@ -88,27 +92,7 @@
         </th>
 
         <th>
-          Duration
-        </th>
-
-        <th>
           Director
-        </th>
-
-        <th>
-          Description
-        </th>
-
-        <th>
-          Image
-        </th>
-
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
         </th>
 
         <th>
@@ -122,6 +106,10 @@
         </td>
 
         <td>
+          <img src="<%= a_movie.image %>">
+        </td>
+
+        <td>
           <%= a_movie.title %>
         </td>
 
@@ -130,26 +118,7 @@
         </td>
 
         <td>
-          <%= a_movie.duration %>
-        </td>
-
-        <td>
-          <%= a_movie.director_id %>
-        </td>
-
-        <td>
-          <%= a_movie.description %>
-        </td>
-
-        <td>
-          <%= a_movie.image %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(a_movie.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_movie.updated_at) %> ago
+          <a href="/directors/<%= a_movie.director_id %>" > <%= a_movie.director.name %> </a>
         </td>
 
         <td>

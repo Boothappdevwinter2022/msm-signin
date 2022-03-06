@@ -18,14 +18,24 @@
     <nav>
       <ul>
           <li>
-            <a href="/user_sign_in">
-              Sign in
-            </a>
+            <% if session.fetch(:user_id).nil? == false %>
+              <a href="/user_sign_out"> Sign out </a>
+            <% else %>
+              <a href="/user_sign_in">
+                Sign in
+              </a>
+            <% end %>
           </li>
           <li>
-            <a href="/user_sign_up">
-              Sign up
-            </a>
+            <% if session.fetch(:user_id).nil? == false %>
+              <a href="/bookmarks"> 
+                My bookmarks 
+              </a>
+            <% else %>
+              <a href="/user_sign_up">
+                Sign up
+              </a>
+            <% end %>
           </li>
         <li>
           <a href="/">
