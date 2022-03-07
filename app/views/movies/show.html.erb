@@ -17,6 +17,14 @@
         </a>
       </div>
     </div>
+    
+    <hr>
+
+    <form action="/insert_bookmark" method="post">
+      <input type="hidden" name="query_user_id" value=<%= session.fetch(:user_id)%>>
+      <input type="hidden" name="query_movie_id" value=<%= @the_movie.id %>>
+      <button> Bookmark this movie! </button>
+    </form>
 
     <dl>
       <dt>
@@ -58,7 +66,7 @@
         Image
       </dt>
       <dd>
-        <%= @the_movie.image %>
+        <img src="<%= @the_movie.image %>">
       </dd>
 
       <dt>
