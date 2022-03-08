@@ -19,12 +19,22 @@
     </div>
     
     <hr>
-
-    <form action="/insert_bookmark" method="post">
-      <input type="hidden" name="query_user_id" value=<%= session.fetch(:user_id)%>>
-      <input type="hidden" name="query_movie_id" value=<%= @the_movie.id %>>
-      <button> Bookmark this movie! </button>
-    </form>
+    <% if @current_user.nil? == false %>
+      <% @all_bookmarks = Bookmark.where({:user_id => @current_user.id}) %>
+      <% @current_bookmark = @all_bookmarks.where({:movie_id => @the_movie.id}).at(0) %>
+      <% if @current_bookmark.nil? == true %>
+        <form action="/insert_bookmark" method="post">
+          <input type="hidden" name="query_user_id" value=<%= session.fetch(:user_id)%>>
+          <input type="hidden" name="query_movie_id" value=<%= @the_movie.id %>>
+          <button> Bookmark this movie! </button>
+        </form>
+      <% else %>
+         <a href="/delete_bookmark/<%= @current_bookmark.id %>">
+          Un-bookmark
+        </a>
+      <% end %>
+    <% else %>
+    <% end %>
 
     <dl>
       <dt>

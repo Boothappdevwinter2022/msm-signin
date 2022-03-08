@@ -8,10 +8,18 @@
       </h1>
     </div>
   </div>
-
+  
   <div>
-    <button> Bookmark this movie! </button>
-  </div>  
+    <form action="/insert_bookmark" method="post">
+      <input type="hidden" name="query_user_id" value=<%= session.fetch(:user_id)%> >
+      <select name="query_movie_id">
+        <% Movie.all.each do |a_movie|%>
+        <option value="<%= a_movie.id %>"><%= a_movie.title %>
+        <% end %>
+      </select>
+      <button> Bookmark this movie! </button>
+    </form>
+  </div>
 
   <hr>
 
@@ -33,9 +41,10 @@
 
         <% @list_of_bookmarks.each do |a_bookmark| %>
         <tr>
-
           <td>
-            <%= a_bookmark.movie.title %>
+            <a href="/movies/<%= a_bookmark.movie.id%>">
+              <%= a_bookmark.movie.title %>
+            </a>
           </td>
 
           <td>
